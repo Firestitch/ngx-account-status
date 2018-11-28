@@ -18,7 +18,7 @@
       "dom"
     ],
     "paths": {
-      "fs-package": [
+      "ngx-account-status": [
         "src/public_api.ts"
       ]
     }

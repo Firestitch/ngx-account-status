@@ -1,1 +1,10 @@
-<fs-component></fs-component>
+<fs-account-status
+  [created]="account.create_date"
+  [email]="account.email"
+  [status]="account.state"
+  [undeleteStatuses]="account.undeleteStatuses"
+  [activationEmailDate]="account.activation_email_date"
+  [activationEmailMessage]="account.activation_email_message"
+  (action)="action($event)"
+>
+</fs-account-status>

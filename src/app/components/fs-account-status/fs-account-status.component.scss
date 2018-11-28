@@ -1,0 +1,40 @@
+:host {
+  ::ng-deep {
+    mat-form-field {
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      .error {
+        color: #f44336;
+      }
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+      }
+
+      .mat-form-field-subscript-wrapper,
+      .mat-form-field-ripple {
+        position: initial !important;
+        display: block;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .fs-account-actions {
+    max-width: none !important;
+    .mat-menu-item {
+      padding: 3px 16px;
+      display: flex;
+      flex-direction: column;
+      &.multi-lines {
+        line-height: 24px;
+      }
+      &.disabled {
+        color: #b6b6b6;
+      }
+    }
+  }
+}

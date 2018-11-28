@@ -1,0 +1,56 @@
+<div fxLayout="row" fxFlex fxLayoutGap="10px">
+  <mat-form-field *ngIf="created">
+    <mat-label>Account Created</mat-label>
+    <input matInput [ngModel]="created | fsDate: 'date-time'" name="created" readonly>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="status">
+    <mat-label>Status</mat-label>
+    <input matInput [ngModel]="statusLabels[status]" name="status" readonly>
+    <mat-hint [ngClass]="{ error: activationEmailMessage }">
+      <ng-container *ngIf="!activationEmailDate">Notification Not Sent</ng-container>
+      <ng-container *ngIf="activationEmailDate">
+        <ng-container *ngIf="!activationEmailMessage">
+          Activation email sent {{ activationEmailDate | fsDate }}
+        </ng-container>
+        <ng-container *ngIf="activationEmailMessage">
+          Activation email delivery failed to {{ email }} on {{ activationEmailDate | fsDate }}.
+          Error: {{ activationEmailMessage }}
+        </ng-container>
+      </ng-container>
+    </mat-hint>
+  </mat-form-field>
+
+  <div fxFlex></div>
+
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="actionsMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #actionsMenu="matMenu" [overlapTrigger]="false" class="fs-account-actions">
+      <ng-container *ngIf="status === 'pending_activation'">
+        <div mat-menu-item (click)="onAction('email_activation')" class="multi-lines">
+          <span>{{ activationEmailDate ? 'Resend' : 'Send' }} Activation Email</span>
+          <small>An email will be sent to {{ email }} to setup their sign-in password</small>
+        </div>
+        <div mat-menu-item (click)="onAction('activate')" class="multi-lines">
+          <span>Activate Account</span>
+          <small>Account will be activated without notifying the person.</small>
+        </div>
+      </ng-container>
+
+      <div mat-menu-item (click)="onAction('delete')" *ngIf="!deleted" class="multi-lines">
+        <span>Delete Account</span>
+        <small>Remove the account from the system, the person will not be able to sign-in.</small>
+      </div>
+
+      <ng-container *ngIf="deleted">
+        <div mat-menu-item class="disabled" (click)="cancel($event)">
+          <span>Undelete Account, set status to:</span>
+        </div>
+        <div mat-menu-item (click)="onAction('undelete', { state: 'active' })">Active</div>
+        <div mat-menu-item (click)="onAction('undelete', { state: 'pending_activation' })">Pending Activation</div>
+      </ng-container>
+    </mat-menu>
+  </div>
+</div>

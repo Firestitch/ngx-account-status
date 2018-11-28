@@ -1,5 +1,2 @@
-/*
- * Public API Surface of fs-menu
- */
-
-export { FsComponentModule } from './app/fs-component.module';
+export { FsAccountStatusModule } from './app/fs-account-status.module';
+export { FsAccountStatusComponent } from './app/components/fs-account-status/fs-account-status.component';
