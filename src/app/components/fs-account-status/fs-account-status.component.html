@@ -7,7 +7,7 @@
   <mat-form-field *ngIf="status">
     <mat-label>Status</mat-label>
     <input matInput [ngModel]="statusLabels[status]" name="status" readonly>
-    <mat-hint [ngClass]="{ error: activationEmailMessage }">
+    <mat-hint *ngIf="status === 'pending_activation'" [ngClass]="{ error: activationEmailMessage }">
       <ng-container *ngIf="!activationEmailDate">Notification Not Sent</ng-container>
       <ng-container *ngIf="activationEmailDate">
         <ng-container *ngIf="!activationEmailMessage">
