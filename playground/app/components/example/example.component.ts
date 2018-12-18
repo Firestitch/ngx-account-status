@@ -25,6 +25,22 @@ export class ExampleComponent {
 
   public action(action) {
     console.log(action);
+
+    if (action.action==='activate') {
+      this.account.state = 'active';
+    }
+
+    if (action.action==='delete') {
+      this.account.state = 'deleted';
+    }
+
+    if (action.action==='undelete') {
+      this.account.state = action.data.state;
+    }
+
+    if (action.action==='email_activation') {
+      alert('Sent Email Activation');
+    }
   }
 
 }

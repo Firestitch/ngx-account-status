@@ -77,11 +77,13 @@
     "rxjs": "^6.3.3",
     "ts-node": "~7.0.0",
     "tsickle": ">=0.29.0",
-    "tslib": "^1.9.0",
     "tslint": "~5.7.0",
     "typescript": "^2.9.2",
     "webpack": "^4.20.2",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "rxjs-compat": "^6.3.3",
+    "tslib": "^1.9.3",
+    "@firestitch/label": "0.1.3"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -90,10 +92,8 @@
     "@firestitch/common": ">=0.3.1",
     "@firestitch/date": ">=0.1.21",
     "moment": ">=2.22.0",
-    "moment-timezone": ">=0.5.21"
+    "moment-timezone": ">=0.5.21",
+    "@firestitch/label": ">=0.1.3"
   },
-  "dependencies": {
-    "rxjs-compat": "^6.3.3",
-    "tslib": "^1.9.3"
-  }
+  "dependencies": {}
 }
