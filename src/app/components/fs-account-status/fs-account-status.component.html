@@ -33,7 +33,7 @@
 
 <mat-menu #actionsMenu="matMenu" [overlapTrigger]="false" class="fs-account-actions">
   <ng-container *ngIf="status === 'pending_activation'">
-    <div mat-menu-item (click)="onAction('email_activation')" class="multi-lines">
+    <div *ngIf="activationEmailDate" mat-menu-item (click)="onAction('email_activation')" class="multi-lines">
       <span>{{ activationEmailDate ? 'Resend' : 'Send' }} Activation Email</span>
       <small>An email will be sent to {{ email }} to setup their sign-in password</small>
     </div>
