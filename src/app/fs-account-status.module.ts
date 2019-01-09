@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FsDateModule } from '@firestitch/date';
 import { FsLabelModule } from '@firestitch/label';
+import { FsMenuModule } from '@firestitch/menu';
 
 import { FsAccountStatusComponent } from './components/fs-account-status/fs-account-status.component';
 
@@ -21,7 +22,8 @@ import { FsAccountStatusComponent } from './components/fs-account-status/fs-acco
     MatIconModule,
     FlexLayoutModule,
     FsDateModule,
-    FsLabelModule
+    FsLabelModule,
+    FsMenuModule
   ],
   exports: [
     FsAccountStatusComponent

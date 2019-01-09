@@ -23,36 +23,33 @@
           </ng-container>
         </div>
       </div>
-      <button mat-icon-button [matMenuTriggerFor]="actionsMenu" type="button">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+
+      <fs-menu class="fs-account-actions">
+        <ng-container *ngIf="status === 'pending_activation'">
+          <ng-template *ngIf="activationEmailDate" fs-menu-item (click)="onAction('email_activation')" class="multi-lines">
+            <span>{{ activationEmailDate ? 'Resend' : 'Send' }} Activation Email</span>
+            <small>An email will be sent to {{ email }} to setup their sign-in password</small>
+          </ng-template>
+          <ng-template fs-menu-item (click)="onAction('activate')" class="multi-lines">
+            <span>Activate Account</span>
+            <small>Account will be activated without notifying the person.</small>
+          </ng-template>
+        </ng-container>
+
+        <ng-template *ngIf="!deleted" fs-menu-item (click)="onAction('delete')" class="multi-lines">
+          <span>Delete Account</span>
+          <small>Remove the account from the system, the person will not be able to sign-in.</small>
+        </ng-template>
+
+        <ng-container *ngIf="deleted">
+          <ng-template fs-menu-item class="disabled" (click)="cancel($event)">
+            <span>Undelete Account, set status to:</span>
+          </ng-template>
+          <ng-template fs-menu-item (click)="onAction('undelete', { state: 'active' })">Active</ng-template>
+          <ng-template fs-menu-item (click)="onAction('undelete', { state: 'pending_activation' })">Pending Activation</ng-template>
+        </ng-container>
+      </fs-menu>
     </div>
 
   </fs-label-field>
 </div>
-
-<mat-menu #actionsMenu="matMenu" [overlapTrigger]="false" class="fs-account-actions">
-  <ng-container *ngIf="status === 'pending_activation'">
-    <div *ngIf="activationEmailDate" mat-menu-item (click)="onAction('email_activation')" class="multi-lines">
-      <span>{{ activationEmailDate ? 'Resend' : 'Send' }} Activation Email</span>
-      <small>An email will be sent to {{ email }} to setup their sign-in password</small>
-    </div>
-    <div mat-menu-item (click)="onAction('activate')" class="multi-lines">
-      <span>Activate Account</span>
-      <small>Account will be activated without notifying the person.</small>
-    </div>
-  </ng-container>
-
-  <div mat-menu-item (click)="onAction('delete')" *ngIf="!deleted" class="multi-lines">
-    <span>Delete Account</span>
-    <small>Remove the account from the system, the person will not be able to sign-in.</small>
-  </div>
-
-  <ng-container *ngIf="deleted">
-    <div mat-menu-item class="disabled" (click)="cancel($event)">
-      <span>Undelete Account, set status to:</span>
-    </div>
-    <div mat-menu-item (click)="onAction('undelete', { state: 'active' })">Active</div>
-    <div mat-menu-item (click)="onAction('undelete', { state: 'pending_activation' })">Pending Activation</div>
-  </ng-container>
-</mat-menu>
