@@ -28,6 +28,10 @@
     button {
       margin-top: -12px;
     }
+
+    .error-msg {
+      color: #f44336;
+    }
   }
 }
 
@@ -38,9 +42,16 @@
       padding: 3px 16px;
       display: flex;
       flex-direction: column;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       &.multi-lines {
         line-height: 24px;
       }
+
       &.disabled {
         color: #b6b6b6;
       }

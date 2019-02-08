@@ -10,7 +10,7 @@
     <div fxLayout="row" fxLayoutAlign="start start">
       <div>
         {{ statusLabels[status] }}
-        <div class="hint" *ngIf="status === 'pending_activation'" [ngClass]="{ error: activationEmailMessage }">
+        <div class="hint" *ngIf="status === 'pending_activation'" [ngClass]="{ 'error-msg': activationEmailMessage }">
           <ng-container *ngIf="!activationEmailDate">Notification Not Sent</ng-container>
           <ng-container *ngIf="activationEmailDate">
             <ng-container *ngIf="!activationEmailMessage">
@@ -18,7 +18,7 @@
             </ng-container>
             <ng-container *ngIf="activationEmailMessage">
               Activation email delivery failed to {{ email }} on {{ activationEmailDate | fsDate }}.
-              {{ activationEmailMessage }}
+              Error: {{ activationEmailMessage }}
             </ng-container>
           </ng-container>
         </div>
@@ -26,7 +26,7 @@
 
       <fs-menu class="fs-account-actions">
         <ng-container *ngIf="status === 'pending_activation'">
-          <ng-template *ngIf="activationEmailDate" fs-menu-item (click)="onAction('email_activation')" class="multi-lines">
+          <ng-template fs-menu-item (click)="onAction('email_activation')" class="multi-lines">
             <span>{{ activationEmailDate ? 'Resend' : 'Send' }} Activation Email</span>
             <small>An email will be sent to {{ email }} to setup their sign-in password</small>
           </ng-template>

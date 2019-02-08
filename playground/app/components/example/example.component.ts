@@ -17,8 +17,8 @@ export class ExampleComponent {
       email: 'john_doe@gmail.com',
       state: 'pending_activation',
       undeleteStatuses: ['pending_activation', 'active'],
-      activation_email_date: moment(),
-      activation_email_message: 'Error Message'
+      activate_email_date: moment(),
+      activate_email_message: 'Error message'
     };
 
   }
