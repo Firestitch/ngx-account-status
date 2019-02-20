@@ -5,8 +5,8 @@ type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
 
 @Component({
   selector: 'fs-account-status',
-  templateUrl: './fs-account-status.component.html',
-  styleUrls: [ './fs-account-status.component.scss' ],
+  templateUrl: './account-status.component.html',
+  styleUrls: [ './account-status.component.scss' ],
 })
 export class FsAccountStatusComponent implements OnInit, OnChanges {
 
