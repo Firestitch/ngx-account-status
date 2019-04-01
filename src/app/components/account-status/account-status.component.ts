@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { filter } from 'lodash-es';
+import { Status } from 'src/app/interfaces/status';
 
 type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
 
@@ -8,32 +10,34 @@ type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
   templateUrl: './account-status.component.html',
   styleUrls: [ './account-status.component.scss' ],
 })
-export class FsAccountStatusComponent implements OnInit, OnChanges {
+export class FsAccountStatusComponent implements OnChanges {
 
   @Input() public created: any = null;
   @Input() public status: string = null;
   @Input() public email: string = null;
-  @Input() public undeleteStatuses: string[] = ['pending_activation', 'active'];
+  @Input() public statuses: Status[] = [];
   @Input() public activationEmailDate: any = null;
   @Input() public activationEmailMessage: string = null;
 
   @Output() public action = new EventEmitter<any>();
 
-  public deleted = false;
+  public statusDeleted = false;
+  public statusPendingActivation = false;
+  public statusName = '';
+  public undeleteStatuses = [];
 
-  public statusLabels = {
-    active: 'Active',
-    pending_activation: 'Pending Activation',
-    deleted: 'Deleted'
-  };
+  public ngOnChanges(changes: SimpleChanges) {
 
-  constructor() { }
+    if (changes.status) {
+      const status: Status = filter(this.statuses, { value: this.status })[0];
+      this.statusDeleted = status && status.deleted;
+      this.statusPendingActivation = status && status.pendingActivation;
+      this.statusName = status ? status.name : '';
+    }
 
-  public ngOnInit() {
-  }
-
-  public ngOnChanges() {
-    this.deleted = this.undeleteStatuses.indexOf(this.status) === -1;
+    if (changes.statuses) {
+      this.undeleteStatuses = filter(this.statuses, { undelete: true });
+    }
   }
 
   public onAction(action: Action, data = null) {
@@ -44,5 +48,4 @@ export class FsAccountStatusComponent implements OnInit, OnChanges {
     $event.preventDefault();
     $event.stopPropagation();
   }
-
 }

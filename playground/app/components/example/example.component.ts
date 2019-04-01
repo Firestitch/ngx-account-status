@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Status } from 'src/app/interfaces/status';
 
 
 @Component({
@@ -8,7 +9,24 @@ import { Component } from '@angular/core';
 export class ExampleComponent {
 
   public account = null;
-  public undeleteStatuses = ['pending_activation', 'active'];
+  public statuses: Status[] = [
+    {
+      value: 'deleted',
+      name: 'Deleted',
+      deleted: true
+    },
+    {
+      value: 'active',
+      name: 'Active',
+      undelete: true
+    },
+    {
+      value: 'pending_activation',
+      name: 'Pending Activation',
+      undelete: true,
+      pendingActivation: true
+    }
+  ];
 
   constructor() {
     this.account = {
@@ -16,7 +34,7 @@ export class ExampleComponent {
       email: 'john_doe@gmail.com',
       state: 'pending_activation',
       activate_email_date: new Date(),
-      activate_email_message: 'Error message'
+      activate_email_message: 'Failed to send email'
     };
   }
 

@@ -2,7 +2,7 @@
   "name": "@firestitch/account-status",
   "title": "Account Status",
   "description": "@firestitch/account-status",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-account-status"
@@ -65,7 +65,8 @@
     "webpack-dev-server": "^3.1.14",
     "zone.js": "^0.8.29",
     "ngx-toastr": "^9.1.2",
-    "date-fns": "2.0.0-alpha.27"
+    "date-fns": "2.0.0-alpha.27",
+    "lodash-es": "^4.17.11"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -74,7 +75,8 @@
     "@firestitch/common": ">=7.0.0",
     "@firestitch/date": ">=7.0.0",
     "@firestitch/menu": ">=7.0.0",
-    "@firestitch/label": ">=7.0.0"
+    "@firestitch/label": ">=7.0.0",
+    "lodash-es": ">=4.17.0"
   },
   "dependencies": {}
 }
