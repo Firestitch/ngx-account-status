@@ -8,17 +8,16 @@ import { Component } from '@angular/core';
 export class ExampleComponent {
 
   public account = null;
+  public undeleteStatuses = ['pending_activation', 'active'];
 
   constructor() {
     this.account = {
       create_date: new Date(),
       email: 'john_doe@gmail.com',
       state: 'pending_activation',
-      undeleteStatuses: ['pending_activation', 'active'],
       activate_email_date: new Date(),
       activate_email_message: 'Error message'
     };
-
   }
 
   public action(action) {

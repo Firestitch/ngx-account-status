@@ -2,9 +2,8 @@
   [created]="account.create_date"
   [email]="account.email"
   [status]="account.state"
-  [undeleteStatuses]="account.undeleteStatuses"
   [activationEmailDate]="account.activate_email_date"
   [activationEmailMessage]="account.activate_email_message"
-  (action)="action($event)"
->
+  [undeleteStatuses]="undeleteStatuses"
+  (action)="action($event)">
 </fs-account-status>
