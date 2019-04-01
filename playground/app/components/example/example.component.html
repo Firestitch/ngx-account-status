@@ -1,9 +1,31 @@
+<div fxLayout="row" fxLayoutGap="20px">
+  <mat-form-field>
+    <input matInput
+      fsDatePicker
+      [(ngModel)]="activationEmailDate"
+      name="activationEmailDate"
+      placeholder="Activation Email Date">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      fsClear
+      [(ngModel)]="activationEmailMessage"
+      name="activationEmailMessage"
+      placeholder="Activation Email Message">
+  </mat-form-field>
+
+</div>
+
+<br>
+
 <fs-account-status
   [created]="account.create_date"
   [email]="account.email"
   [status]="account.state"
-  [activationEmailDate]="account.activate_email_date"
-  [activationEmailMessage]="account.activate_email_message"
+  [activationEmailDate]="activationEmailDate"
+  [activationEmailMessage]="activationEmailMessage"
   [statuses]="statuses"
   (action)="action($event)">
 </fs-account-status>

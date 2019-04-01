@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FsExampleModule } from '@firestitch/example';
 import { FsAccountStatusModule } from '@firestitch/account-status';
 import { FsMessageModule } from '@firestitch/message';
+import { FsDatePickerModule } from '@firestitch/datepicker';
+import { FsClearModule } from '@firestitch/clear';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppMaterialModule } from './material.module';
@@ -26,6 +28,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
+    FsClearModule,
+    FsDatePickerModule,
     FsExampleModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
     FsMessageModule.forRoot(),

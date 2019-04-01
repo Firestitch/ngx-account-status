@@ -47,6 +47,8 @@
     "@compodoc/compodoc": "^1.1.7",
     "@firestitch/common": "^7.0.0",
     "@firestitch/date": "^7.0.0",
+    "@firestitch/datepicker": "^7.1.2",
+    "@firestitch/clear": "^7.1.0",
     "@firestitch/example": "^7.0.0",
     "@firestitch/iframe": "^0.2.0",
     "@firestitch/label": "^7.0.0",
@@ -66,7 +68,8 @@
     "zone.js": "^0.8.29",
     "ngx-toastr": "^9.1.2",
     "date-fns": "2.0.0-alpha.27",
-    "lodash-es": "^4.17.11"
+    "lodash-es": "^4.17.11",
+    "iscroll": "^5.2.0"
   },
   "engines": {
     "node": ">=6.0.0"

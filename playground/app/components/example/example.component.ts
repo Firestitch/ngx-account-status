@@ -9,6 +9,9 @@ import { Status } from 'src/app/interfaces/status';
 export class ExampleComponent {
 
   public account = null;
+  public activationEmailDate = new Date();
+  public activationEmailMessage = 'Failed to send email';
+
   public statuses: Status[] = [
     {
       value: 'deleted',
@@ -32,9 +35,7 @@ export class ExampleComponent {
     this.account = {
       create_date: new Date(),
       email: 'john_doe@gmail.com',
-      state: 'pending_activation',
-      activate_email_date: new Date(),
-      activate_email_message: 'Failed to send email'
+      state: 'pending_activation'
     };
   }
 

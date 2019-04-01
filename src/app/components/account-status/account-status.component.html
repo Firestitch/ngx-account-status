@@ -17,7 +17,8 @@
               Activation email sent {{ activationEmailDate | fsDate }}
             </ng-container>
             <ng-container *ngIf="activationEmailMessage">
-              Activation email delivery failed to {{ email }} on {{ activationEmailDate | fsDate }}. {{ activationEmailMessage }}
+              Activation email delivery failed to {{ email }} on {{ activationEmailDate | fsDate }}.
+              <div>{{ activationEmailMessage }}</div>
             </ng-container>
           </ng-container>
         </div>
