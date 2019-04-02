@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, OnInit, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { filter } from 'lodash-es';
-import { Status } from 'src/app/interfaces/status';
+import { Status } from '../../interfaces/status';
 
 type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
 
