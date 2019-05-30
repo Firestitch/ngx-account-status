@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
+
 import { filter } from 'lodash-es';
+
 import { Status } from '../../interfaces/status';
 
 type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
@@ -18,6 +20,7 @@ export class FsAccountStatusComponent implements OnChanges {
   @Input() public statuses: Status[] = [];
   @Input() public activationEmailDate: any = null;
   @Input() public activationEmailMessage: string = null;
+  @Input() public statusLabel = 'Status';
 
   @Output() public action = new EventEmitter<any>();
 
@@ -48,4 +51,5 @@ export class FsAccountStatusComponent implements OnChanges {
     $event.preventDefault();
     $event.stopPropagation();
   }
+
 }

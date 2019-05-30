@@ -6,7 +6,7 @@
   </fs-label-field>
 
   <fs-label-field *ngIf="status">
-    <fs-label>Status</fs-label>
+    <fs-label>{{ statusLabel }}</fs-label>
     <div fxLayout="row" fxLayoutAlign="start start">
       <div>
         {{statusName}}
