@@ -38,22 +38,31 @@
 ::ng-deep {
   .fs-account-actions {
     max-width: none !important;
+
     .mat-menu-item {
       padding: 3px 16px;
       display: flex;
       flex-direction: column;
-      margin-bottom: 10px;
+      justify-content: center;
+      overflow: visible;
+      white-space: normal;
+      min-height: 48px;
+      height: unset;
 
       &:last-child {
         margin-bottom: 0;
       }
 
       &.multi-lines {
-        line-height: 24px;
+        line-height: normal;
       }
 
       &.disabled {
         color: #b6b6b6;
+      }
+
+      small {
+        margin-top: 3px;
       }
     }
   }
