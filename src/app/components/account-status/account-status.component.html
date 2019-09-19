@@ -1,7 +1,7 @@
 <div fxLayout="row" fxFlex fxLayoutGap="20px">
 
   <fs-label-field *ngIf="created">
-    <fs-label>Account Created</fs-label>
+    <fs-label>{{ createdLabel }}</fs-label>
     {{ created | fsDate: 'date-time' }}
   </fs-label-field>
 
@@ -31,14 +31,14 @@
             <small>An email will be sent to {{ email }} to setup their sign-in password</small>
           </ng-template>
           <ng-template fs-menu-item (click)="onAction('activate')" class="multi-lines">
-            <span>Activate Account</span>
-            <small>Account will be activated without notifying the person.</small>
+            <span>Activate {{objectName | titlecase}}</span>
+            <small>{{objectName | titlecase}} will be activated without notifying the person.</small>
           </ng-template>
         </ng-container>
 
         <ng-container *ngIf="statusDeleted">
           <ng-template fs-menu-item class="disabled" (click)="cancel($event)">
-            <span>Undelete Account, set status to:</span>
+            <span>Undelete {{objectName | titlecase}}, set status to:</span>
           </ng-template>
           <ng-template fs-menu-item (click)="onAction('undelete', { state: status.value })" *ngFor="let status of undeleteStatuses">
             {{status.name}}
@@ -46,8 +46,8 @@
         </ng-container>
 
         <ng-template *ngIf="!statusDeleted" fs-menu-item (click)="onAction('delete')" class="multi-lines">
-          <span>Delete Account</span>
-          <small>Remove the account from the system, the person will not be able to sign-in.</small>
+          <span>Delete {{objectName | titlecase}}</span>
+          <small>Remove the {{objectName}} from the system, the person will not be able to sign-in.</small>
         </ng-template>
       </fs-menu>
     </div>

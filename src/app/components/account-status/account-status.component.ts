@@ -21,6 +21,8 @@ export class FsAccountStatusComponent implements OnChanges {
   @Input() public activationEmailDate: any = null;
   @Input() public activationEmailMessage: string = null;
   @Input() public statusLabel = 'Status';
+  @Input() public createdLabel = 'Created';
+  @Input() public objectName = 'account';
 
   @Output() public action = new EventEmitter<any>();
 
