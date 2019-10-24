@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <fs-menu class="fs-account-actions">
+      <fs-menu *ngIf="!hideMenu" class="fs-account-actions">
         <ng-container *ngIf="statusPendingActivation">
           <ng-template fs-menu-item (click)="onAction('email_activation')" class="multi-lines">
             <span>{{ activationEmailDate ? 'Resend' : 'Send' }} Activation Email</span>

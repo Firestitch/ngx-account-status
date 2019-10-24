@@ -24,6 +24,8 @@ export class FsAccountStatusComponent implements OnChanges {
   @Input() public createdLabel = 'Created';
   @Input() public objectName = 'account';
 
+  @Input() public hideMenu = false;
+
   @Output() public action = new EventEmitter<any>();
 
   public statusDeleted = false;
