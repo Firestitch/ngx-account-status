@@ -29,7 +29,7 @@ const routes: Routes = [
     AppMaterialModule,
     FormsModule,
     FsClearModule,
-    FsDatePickerModule,
+    FsDatePickerModule.forRoot(),
     FsExampleModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
     FsMessageModule.forRoot(),
