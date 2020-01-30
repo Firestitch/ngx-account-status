@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 
 import { filter } from 'lodash-es';
 
@@ -11,6 +19,7 @@ type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
   selector: 'fs-account-status',
   templateUrl: './account-status.component.html',
   styleUrls: [ './account-status.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsAccountStatusComponent implements OnChanges {
 
