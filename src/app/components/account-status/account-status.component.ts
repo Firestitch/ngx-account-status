@@ -60,9 +60,4 @@ export class FsAccountStatusComponent implements OnChanges {
     this.action.emit({ action, data });
   }
 
-  public cancel($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-  }
-
 }

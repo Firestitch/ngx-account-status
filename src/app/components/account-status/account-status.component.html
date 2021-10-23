@@ -37,12 +37,11 @@
         </ng-container>
 
         <ng-container *ngIf="statusDeleted">
-          <ng-template fs-menu-item class="disabled" (click)="cancel($event)">
-            <span>Undelete {{objectName | titlecase}}, set status to:</span>
-          </ng-template>
-          <ng-template fs-menu-item (click)="onAction('undelete', { state: status.value })" *ngFor="let status of undeleteStatuses">
-            {{status.name}}
-          </ng-template>
+          <fs-menu-group label="Undelete {{objectName | titlecase}}, set status to:">
+            <ng-template fs-menu-item (click)="onAction('undelete', { state: status.value })" *ngFor="let status of undeleteStatuses">
+              {{ status.name }}
+            </ng-template>
+          </fs-menu-group>
         </ng-container>
 
         <ng-template *ngIf="!statusDeleted" fs-menu-item (click)="onAction('delete')" class="multi-lines">
