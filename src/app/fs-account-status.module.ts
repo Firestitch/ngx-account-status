@@ -39,7 +39,7 @@ import { FsAccountStatusComponent } from './components/account-status/account-st
   providers: [],
 })
 export class FsAccountStatusModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FsAccountStatusModule> {
     return {
       ngModule: FsAccountStatusModule
     };
