@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 
-import { FsExampleModule } from '@firestitch/example';
 import { FsAccountStatusModule } from '@firestitch/account-status';
-import { FsMessageModule } from '@firestitch/message';
-import { FsDatePickerModule } from '@firestitch/datepicker';
 import { FsClearModule } from '@firestitch/clear';
-import { ToastrModule } from 'ngx-toastr';
+import { FsDatePickerModule } from '@firestitch/datepicker';
+import { FsExampleModule } from '@firestitch/example';
+import { FsMessageModule } from '@firestitch/message';
 
-import { AppMaterialModule } from './material.module';
-import { ExampleComponent, ExamplesComponent } from './components';
 import { AppComponent } from './app.component';
+import { ExampleComponent, ExamplesComponent } from './components';
+import { AppMaterialModule } from './material.module';
 
 
 const routes: Routes = [
@@ -31,7 +30,6 @@ const routes: Routes = [
     FsClearModule,
     FsDatePickerModule.forRoot(),
     FsExampleModule.forRoot(),
-    ToastrModule.forRoot({ preventDuplicates: true }),
     FsMessageModule.forRoot(),
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
   ],
