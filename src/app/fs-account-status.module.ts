@@ -1,12 +1,12 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FsDateModule } from '@firestitch/date';
 import { FsLabelModule } from '@firestitch/label';
@@ -24,24 +24,21 @@ import { FsAccountStatusComponent } from './components/account-status/account-st
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    FlexLayoutModule,
     FsDateModule,
     FsLabelModule,
-    FsMenuModule
+    FsMenuModule,
   ],
   exports: [
-    FsAccountStatusComponent
+    FsAccountStatusComponent,
   ],
-  entryComponents: [],
   declarations: [
-    FsAccountStatusComponent
+    FsAccountStatusComponent,
   ],
-  providers: [],
 })
 export class FsAccountStatusModule {
-  static forRoot(): ModuleWithProviders<FsAccountStatusModule> {
+  public static forRoot(): ModuleWithProviders<FsAccountStatusModule> {
     return {
-      ngModule: FsAccountStatusModule
+      ngModule: FsAccountStatusModule,
     };
   }
 

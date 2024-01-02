@@ -1,4 +1,4 @@
-<div fxLayout="row" fxFlex fxLayoutGap="20px">
+<div class="fs-row.gap-large">
 
   <fs-label-field *ngIf="created">
     <fs-label>{{ createdLabel }}</fs-label>
@@ -7,7 +7,7 @@
 
   <fs-label-field *ngIf="status">
     <fs-label>{{ statusLabel }}</fs-label>
-    <div fxLayout="row" fxLayoutAlign="start start">
+    <div class="fs-row">
       <div>
         {{statusName}}
         <div class="hint" *ngIf="statusPendingActivation" [ngClass]="{ 'error-msg': activationEmailMessage }">
