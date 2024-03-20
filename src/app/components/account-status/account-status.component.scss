@@ -20,6 +20,7 @@
       }
     }
   }
+  
   .hint {
     font-size: 75%;
   }
@@ -32,6 +33,15 @@
     .error-msg {
       color: #f44336;
     }
+  }
+}
+
+.status-content {
+  display: flex;
+  align-items: flex-start;
+
+  fs-menu {
+    margin-top: -1px;
   }
 }
 
