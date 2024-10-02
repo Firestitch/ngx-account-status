@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @use '@firestitch/style/styles' as fs-style;
-@import '~@firestitch/component-tools/assets/playground.scss';
-@import '~@firestitch/message/styles';
+@import '@firestitch/component-tools/assets/playground.scss';
+@import '@firestitch/message/styles';
 @import '@firestitch/datepicker/styles';
 @import '../src/app/styles.scss';
 
