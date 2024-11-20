@@ -49,28 +49,38 @@
   .fs-account-actions {
     max-width: none !important;
 
-    .mat-menu-item {
-      padding: 3px 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start !important;
-      overflow: visible;
-      white-space: normal;
-      min-height: 48px;
-      height: unset;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      &.multi-lines {
-        line-height: normal;
-      }
-
-      small {
-        margin-top: 3px;
+    .fs-menu-group-label {
+      padding: 0 10px 0;
+    }
+    .mat-mdc-menu-item {
+      .mat-mdc-menu-item-text {
+        flex-direction: column;
+        align-items: start;
       }
     }
+
+    // .mat-mdc-menu-item {
+    //   padding: 3px 16px;
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: center;
+    //   align-items: start !important;
+    //   overflow: visible;
+    //   white-space: normal;
+    //   min-height: 48px;
+    //   height: unset;
+
+    //   &:last-child {
+    //     margin-bottom: 0;
+    //   }
+
+    //   &.multi-lines {
+    //     line-height: normal;
+    //   }
+
+    //   small {
+    //     margin-top: 3px;
+    //   }
+    // }
   }
 }
