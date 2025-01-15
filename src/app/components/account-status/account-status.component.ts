@@ -3,14 +3,12 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
-  Output,
-  SimpleChanges
+  OnInit,
+  Output
 } from '@angular/core';
 
-import { filter } from 'lodash-es';
-
-import { Status } from '../../interfaces/status';
+import { AccountStatuses } from '../../consts/account-statuses.const';
+import { AccountStatus } from '../../enums';
 
 type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
 
@@ -21,12 +19,12 @@ type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
   styleUrls: [ './account-status.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FsAccountStatusComponent implements OnChanges {
+export class FsAccountStatusComponent implements OnInit {
 
   @Input() public created: any = null;
   @Input() public status: string = null;
   @Input() public email: string = null;
-  @Input() public statuses: Status[] = [];
+  @Input() public statuses = AccountStatuses;
   @Input() public activationEmailDate: any = null;
   @Input() public activationEmailMessage: string = null;
   @Input() public statusLabel = 'Status';
@@ -37,23 +35,14 @@ export class FsAccountStatusComponent implements OnChanges {
 
   @Output() public action = new EventEmitter<any>();
 
-  public statusDeleted = false;
-  public statusPendingActivation = false;
-  public statusName = '';
-  public undeleteStatuses = [];
+  public statusNames = {};
+  public AccountStatus = AccountStatus;
 
-  public ngOnChanges(changes: SimpleChanges) {
-
-    if (changes.status) {
-      const status: Status = filter(this.statuses, { value: this.status })[0];
-      this.statusDeleted = status && status.deleted;
-      this.statusPendingActivation = status && status.pendingActivation;
-      this.statusName = status ? status.name : '';
-    }
-
-    if (changes.statuses) {
-      this.undeleteStatuses = filter(this.statuses, { undelete: true });
-    }
+  public ngOnInit() {
+    this.statusNames = this.statuses.reduce((acc, status) => {
+      acc[status.value] = status.name;
+      return acc;
+    }, {});
   }
 
   public onAction(action: Action, data = null) {

@@ -1,55 +1,49 @@
 <div class="fs-row.align-start.gap-large">
-
-  <fs-label-field *ngIf="created">
-    <fs-label>{{ createdLabel }}</fs-label>
-    {{ created | fsDate: 'date-time' }}
-  </fs-label-field>
-
   <fs-label-field *ngIf="status">
-    <fs-label>{{ statusLabel }}</fs-label>
+    <fs-label>
+      {{ statusLabel }}
+    </fs-label>
     <div class="status-content">
       <div>
-        {{statusName}}
-        <div class="hint" *ngIf="statusPendingActivation" [ngClass]="{ 'error-msg': activationEmailMessage }">
-          <ng-container *ngIf="!activationEmailDate">Notification Not Sent</ng-container>
-          <ng-container *ngIf="activationEmailDate">
-            <ng-container *ngIf="!activationEmailMessage">
-              Activation email sent {{ activationEmailDate | fsDate }}
-            </ng-container>
-            <ng-container *ngIf="activationEmailMessage">
-              Activation email delivery failed to {{ email }} on {{ activationEmailDate | fsDate }}.
-              <div>{{ activationEmailMessage }}</div>
-            </ng-container>
-          </ng-container>
-        </div>
+        {{ statusNames[status] || 'Unknown' }}
       </div>
-
-      <fs-menu *ngIf="!hideMenu" class="fs-account-actions">
-        <ng-container *ngIf="statusPendingActivation">
-          <ng-template fs-menu-item (click)="onAction('email_activation')" class="multi-lines">
-            <span>{{ activationEmailDate ? 'Resend' : 'Send' }} Activation Email</span>
-            <small>An email will be sent to {{ email }} to setup their sign-in password</small>
+      <fs-menu
+          *ngIf="!hideMenu"
+          class="fs-account-actions">
+        @if (status === AccountStatus.Deleted) {
+          <ng-template
+              fs-menu-item
+              (click)="onAction('undelete', { state: AccountStatus.Active })">
+            Undelete
           </ng-template>
-          <ng-template fs-menu-item (click)="onAction('activate')" class="multi-lines">
-            <span>Activate {{objectName | titlecase}}</span>
-            <small>{{objectName | titlecase}} will be activated without notifying the person.</small>
+        }
+        @if (status === AccountStatus.PendingActivation) {
+          <ng-template
+              fs-menu-item
+              (click)="onAction('activate', { state: AccountStatus.Active })">
+            Activate
           </ng-template>
-        </ng-container>
-
-        <ng-container *ngIf="statusDeleted">
-          <fs-menu-group label="Undelete {{objectName | titlecase}}, set status to:">
-            <ng-template fs-menu-item (click)="onAction('undelete', { state: status.value })" *ngFor="let status of undeleteStatuses">
-              {{ status.name }}
-            </ng-template>
-          </fs-menu-group>
-        </ng-container>
-
-        <ng-template *ngIf="!statusDeleted" fs-menu-item (click)="onAction('delete')" class="multi-lines">
-          <span>Delete {{objectName | titlecase}}</span>
-          <small>Remove the {{objectName}} from the system, the person will not be able to sign-in.</small>
-        </ng-template>
+        }
+        @if (status === AccountStatus.Active) {
+          <ng-template
+              fs-menu-item
+              (click)="onAction('delete')"
+              class="multi-lines">
+            <span>
+              Delete
+            </span>
+            <small>
+              Remove from the system, the account will not be able to sign-in.
+            </small>
+          </ng-template>
+        }
       </fs-menu>
     </div>
-
+  </fs-label-field>
+  <fs-label-field *ngIf="created">
+    <fs-label>
+      {{ createdLabel }}
+    </fs-label>
+    {{ created | fsDate: 'date-time' }}
   </fs-label-field>
 </div>

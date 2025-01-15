@@ -4,4 +4,5 @@ export interface Status {
   deleted?: boolean
   undelete?: boolean
   pendingActivation?: boolean
+  disabled?: boolean
 }
