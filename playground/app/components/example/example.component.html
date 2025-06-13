@@ -1,12 +1,12 @@
-<div class="fs-row.gap-large">
+<div class="fs-row.gap-lg">
   <mat-form-field>
-    <input matInput
+    <input
+      matInput
       fsDatePicker
       [(ngModel)]="activationEmailDate"
       name="activationEmailDate"
       placeholder="Activation Email Date">
   </mat-form-field>
-
   <mat-form-field>
     <input
       matInput
@@ -15,11 +15,8 @@
       name="activationEmailMessage"
       placeholder="Activation Email Message">
   </mat-form-field>
-
 </div>
-
 <br>
-
 <fs-account-status
   [created]="account.create_date"
   [email]="account.email"
