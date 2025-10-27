@@ -1,49 +1,54 @@
 <div class="fs-row.align-start.gap-lg">
-  <fs-label-field *ngIf="status">
-    <fs-label>
-      {{ statusLabel }}
-    </fs-label>
-    <div class="status-content">
-      <div>
-        {{ statusNames[status] || 'Unknown' }}
+  @if (status) {
+    <fs-label-field>
+      <fs-label>
+        {{ statusLabel }}
+      </fs-label>
+      <div class="status-content">
+        <div>
+          {{ statusNames[status] || 'Unknown' }}
+        </div>
+        @if (!hideMenu) {
+          <fs-menu
+            class="fs-account-actions">
+            @if (status === AccountStatus.Deleted) {
+              <ng-template
+                fs-menu-item
+                (click)="onAction('undelete', { state: AccountStatus.Active })">
+                Undelete
+              </ng-template>
+            }
+            @if (status === AccountStatus.PendingActivation) {
+              <ng-template
+                fs-menu-item
+                (click)="onAction('activate', { state: AccountStatus.Active })">
+                Activate
+              </ng-template>
+            }
+            @if (status === AccountStatus.Active) {
+              <ng-template
+                fs-menu-item
+                (click)="onAction('delete')"
+                class="multi-lines">
+                <span>
+                  Delete
+                </span>
+                <small>
+                  Remove from the system, the account will not be able to sign-in.
+                </small>
+              </ng-template>
+            }
+          </fs-menu>
+        }
       </div>
-      <fs-menu
-          *ngIf="!hideMenu"
-          class="fs-account-actions">
-        @if (status === AccountStatus.Deleted) {
-          <ng-template
-              fs-menu-item
-              (click)="onAction('undelete', { state: AccountStatus.Active })">
-            Undelete
-          </ng-template>
-        }
-        @if (status === AccountStatus.PendingActivation) {
-          <ng-template
-              fs-menu-item
-              (click)="onAction('activate', { state: AccountStatus.Active })">
-            Activate
-          </ng-template>
-        }
-        @if (status === AccountStatus.Active) {
-          <ng-template
-              fs-menu-item
-              (click)="onAction('delete')"
-              class="multi-lines">
-            <span>
-              Delete
-            </span>
-            <small>
-              Remove from the system, the account will not be able to sign-in.
-            </small>
-          </ng-template>
-        }
-      </fs-menu>
-    </div>
-  </fs-label-field>
-  <fs-label-field *ngIf="created">
-    <fs-label>
-      {{ createdLabel }}
-    </fs-label>
-    {{ created | fsDate: 'date-time' }}
-  </fs-label-field>
+    </fs-label-field>
+  }
+  @if (created) {
+    <fs-label-field>
+      <fs-label>
+        {{ createdLabel }}
+      </fs-label>
+      {{ created | fsDate: 'date-time' }}
+    </fs-label-field>
+  }
 </div>
