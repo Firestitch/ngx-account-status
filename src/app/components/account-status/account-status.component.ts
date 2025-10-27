@@ -9,15 +9,24 @@ import {
 
 import { AccountStatuses } from '../../consts/account-statuses.const';
 import { AccountStatus } from '../../enums';
+import { FsLabelModule } from '@firestitch/label';
+import { FsMenuModule } from '@firestitch/menu';
+import { FsDateModule } from '@firestitch/date';
 
 type Action = 'activate' | 'email_activation' | 'delete' | 'undelete';
 
 
 @Component({
-  selector: 'fs-account-status',
-  templateUrl: './account-status.component.html',
-  styleUrls: [ './account-status.component.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-account-status',
+    templateUrl: './account-status.component.html',
+    styleUrls: ['./account-status.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FsLabelModule,
+        FsMenuModule,
+        FsDateModule,
+    ],
 })
 export class FsAccountStatusComponent implements OnInit {
 

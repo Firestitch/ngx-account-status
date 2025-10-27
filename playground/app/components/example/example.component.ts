@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
 import { Status } from 'src/app/interfaces/status';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { FsDatePickerModule } from '@firestitch/datepicker';
+import { FsClearModule } from '@firestitch/clear';
+import { FsAccountStatusComponent } from '../../../../src/app/components/account-status/account-status.component';
 
 
 @Component({
-  selector: 'example',
-  templateUrl: './example.component.html'
+    selector: 'example',
+    templateUrl: './example.component.html',
+    standalone: true,
+    imports: [MatFormField, MatInput, FormsModule, FsDatePickerModule, FsClearModule, FsAccountStatusComponent]
 })
 export class ExampleComponent {
 

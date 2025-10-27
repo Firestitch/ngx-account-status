@@ -16,24 +16,22 @@ import { FsAccountStatusComponent } from './components/account-status/account-st
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    FsDateModule,
-    FsLabelModule,
-    FsMenuModule,
-  ],
-  exports: [
-    FsAccountStatusComponent,
-  ],
-  declarations: [
-    FsAccountStatusComponent,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        FsDateModule,
+        FsLabelModule,
+        FsMenuModule,
+        FsAccountStatusComponent,
+    ],
+    exports: [
+        FsAccountStatusComponent,
+    ],
 })
 export class FsAccountStatusModule {
   public static forRoot(): ModuleWithProviders<FsAccountStatusModule> {
